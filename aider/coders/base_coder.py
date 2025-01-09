@@ -1090,6 +1090,9 @@ class Coder:
 
         if self.gpt_prompts.system_reminder:
             main_sys += "\n" + self.fmt_system_prompt(self.gpt_prompts.system_reminder)
+        
+        # Add custom command prompt
+        main_sys += "\n" + self.fmt_system_prompt(self.gpt_prompts.custom_command_prompt)
 
         chunks = ChatChunks()
 

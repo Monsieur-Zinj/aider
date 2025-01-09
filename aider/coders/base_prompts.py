@@ -50,3 +50,9 @@ Do not edit these files!
     shell_cmd_reminder = ""
     no_shell_cmd_prompt = ""
     no_shell_cmd_reminder = ""
+
+    custom_command_prompt = """You can define custom commands using the following format:
+/custom-command <command_name> <prompt>
+Example:
+/custom-command refactor "Help me refactor this code to be more maintainable and efficient"
+"""

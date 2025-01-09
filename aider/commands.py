@@ -1399,6 +1399,29 @@ class Commands:
 
         report_github_issue(issue_text, title=title, confirm=False)
 
+    def cmd_custom_command(self, args):
+        """Define a new custom command with an associated prompt"""
+        if not args.strip():
+            self.io.tool_error("Please provide a command name and prompt")
+            return
+
+        parts = args.split(maxsplit=1)
+        if len(parts) < 2:
+            self.io.tool_error("Please provide both a command name and prompt")
+            return
+
+        command_name, prompt = parts
+        
+        # Create new command method dynamically
+        def custom_command_fn(self, args):
+            return self._generic_chat_command(prompt, self.coder.edit_format)
+        
+        # Register the new command
+        cmd_name = f"cmd_{command_name.replace('-', '_')}"
+        setattr(self.__class__, cmd_name, custom_command_fn)
+        
+        self.io.tool_output(f"Created new command /{command_name} with prompt: {prompt}")
+
     def cmd_editor(self, initial_content=""):
         "Open an editor to write a prompt"
 
