@@ -17,3 +17,5 @@ aider/_version.py
 .#*
 .gitattributes
 tmp.benchmarks/
+activate_env.sh
+
