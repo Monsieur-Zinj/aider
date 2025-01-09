@@ -1,5 +1,6 @@
 .DS_Store
 .vscode/
+activate_env.sh
 aider.code-workspace
 *.pyc
 .aider*
